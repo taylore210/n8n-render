@@ -1,11 +1,9 @@
 FROM n8nio/n8n:latest
 
-# Crée le dossier de config
-RUN mkdir -p /home/node/.n8n && \
-    chown -R node:node /home/node/.n8n
-
-WORKDIR /home/node/.n8n
+RUN mkdir -p /data && chown -R node:node /data
 
 USER node
+WORKDIR /data
 
 CMD ["n8n"]
+
