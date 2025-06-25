@@ -1,12 +1,16 @@
 
+
+
 FROM n8nio/n8n:latest
 
 USER root
 
-RUN mkdir -p /home/node/.n8n \
- && chown -R node:node /home/node/.n8n
+ENV N8N_USER_FOLDER=/data
 
-COPY .env /home/node/.n8n/
+RUN mkdir -p /data && \
+    chown -R node:node /data
+
+COPY .env /data/
 
 USER node
 
